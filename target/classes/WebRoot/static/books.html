@@ -1,0 +1,48 @@
+<html>
+<head>
+<script src="js/jquery-1.11.1.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+		<div id="myDiv"><h2>Books</h2></div>
+			<div id="app-1">
+  				<ol>
+  				
+  				 <table border="1">  
+          				  <tr>  
+               				 <td>图书编号</td>  
+              				  <td>图书名称</td>  
+              			 	 <td>价格</td>  
+                			<td>数量</td>  
+          				  </tr>  
+  					  <tr v-for="todo in todos">
+    				  
+            				  	  <td>{{ todo.id }}</td>  
+             					   <td>{{ todo.name }}</td>  
+              		 				 <td>{{ todo.price }}</td>  
+              		 			 <td>{{ todo.count }}</td>  
+            			  </tr>
+        		</table>  
+    				  
+ 			 </ol>
+			</div>
+
+</html>
+
+
+<script type="text/javascript">
+
+obj=$.ajax({url:"/books",async:false});
+	
+var books = $.parseJSON(obj.responseText);
+var app1 = new Vue({
+  el: '#app-1',
+  data: {
+    todos: books
+  }
+})
+
+
+
+</script>
